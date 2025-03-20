@@ -7,6 +7,10 @@ from sklearn.tree import (
     DecisionTreeClassifier,
 )  # Replace with the algorithm of the model you have chosen.
 import pandas as pd
+
+pd.set_option("display.max_rows", None)
+pd.set_option("display.max_colwidth", None)
+pd.set_option("display.max_columns", None)
 from sklearn.preprocessing import LabelEncoder
 
 import argparse
@@ -114,6 +118,7 @@ if __name__ == "__main__":
     # print(X.info())
     # print(X.describe(include="all"))
     # Prepare your model as needed.
+    print(X)
     model = load_model(model_filename)
 
     total_right = 0
@@ -132,7 +137,7 @@ if __name__ == "__main__":
     for index, row in df.iterrows():
         y_target = row["class"]  # original string label (e.g., "p" or "e")
         y_pred = row["Predicted"]
-        print("prediction:", y_pred, ", target:", y_target)
+        # print("prediction:", y_pred, ", target:", y_target)
         if y_pred == y_target:
             total_right += 1
         else:
